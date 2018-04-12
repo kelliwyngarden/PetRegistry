@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Pet Registration Form</title>
 </head>
 <body>
-<h2>Address Registration Form</h2>
+<h2>Pet Registration Form</h2>
 <mvc:form modelAttribute = "pet" action = "petResult.mvc">
 	<table>
 		<tr>
@@ -29,10 +29,6 @@
 			<td><mvc:input path = "coloring" /></td>
 		</tr>
 		<tr>
-			<td><mvc:label path = "owner">Owner</mvc:label></td>
-			<td><mvc:checkbox path = "owner" /></td>
-		</tr>
-		<tr>
 			<td colspan = "2">
 				<input type = "submit" value = "Submit" />
 			</td>
@@ -40,5 +36,6 @@
 	</table>
 </mvc:form>
 <a href = "viewAllPets.mvc">View All Pets</a>
+<a href = "homepage.mvc">Return Home</a>
 </body>
 </html>
