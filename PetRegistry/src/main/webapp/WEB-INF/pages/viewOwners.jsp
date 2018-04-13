@@ -10,33 +10,44 @@
 <title>All Registered Owners</title>
 </head>
 <body>
-	<c:forEach items = "${all}" var = "owner">
+<mvc:form modelAttribute = "post" action = "petForm.mvc">
+	<c:forEach items = "${allOwners}" var = "owner">
 		<table>
 			<tr>
-				<td>First Name</td>
+				<td><input type ="radio" name = "ownerId" value = "${owner.ownerId}">${owner.ownerId}</td>
 				<td>${owner.firstName}</td>
-			</tr>
-			<tr>
-				<td>Last Name</td>
 				<td>${owner.lastName}</td>
-			</tr>
-			<tr>
-				<td>Phone Number</td>
 				<td>${owner.phone}</td>
-			</tr>
-			<tr>
-				<td>Email</td>
 				<td>${owner.email}</td>
-			</tr>
-			<tr>
-				<td>Address</td>
 				<td>${owner.address}</td>
 			</tr>
+<!-- 			<tr> -->
+<!-- 				<td>First Name</td> -->
+<%-- 				<td >${owner.firstName}</td> --%>
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td>Last Name</td> -->
+<%-- 				<td>${owner.lastName}</td> --%>
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td>Phone Number</td> -->
+<%-- 				<td>${owner.phone}</td> --%>
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td>Email</td> -->
+<%-- 				<td>${owner.email}</td> --%>
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td>Address</td> -->
+<%-- 				<td>${owner.address}</td> --%>
+<!-- 			</tr> -->
 		</table>
 		<br/>
 		<hr style = "text-align: left; margin-left: 0; width: 25%">
 		<br/>
 	</c:forEach>
+	<input type = "submit" value = "Add Pet">
+</mvc:form>
 	<a href = "petForm.mvc">Add Pet</a> <br />
 	<a href = "ownerForm.mvc">Add New Pet Owner</a>
 </body>

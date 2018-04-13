@@ -48,10 +48,12 @@ public class PetRegistryController {
 	}
 	
 	@RequestMapping(value = "/petForm")
-	public ModelAndView petForm() {
+	public ModelAndView petForm(int ownerId) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("petForm");
-		modelAndView.addObject("pet", new Pet());
+		Owner owner = ownerDao.getOwner(ownerId);
+		modelAndView.addObject("owner", owner);
+		modelAndView.addObject("pet", new Pet(owner));
 		return modelAndView;
 	}
 	

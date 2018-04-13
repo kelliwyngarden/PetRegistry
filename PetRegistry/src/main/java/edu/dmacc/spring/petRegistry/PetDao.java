@@ -42,7 +42,7 @@ public class PetDao {
 	public void removePet(int petToRemove) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Pet> removePet = em.createQuery("select p from Pet p where p.id = :selectedId", Pet.class);
+		TypedQuery<Pet> removePet = em.createQuery("select p from Pet p where p.petId = :selectedId", Pet.class);
 		removePet.setParameter("selectedId", petToRemove);
 		removePet.setMaxResults(1);
 		Pet toDelete = removePet.getSingleResult();
@@ -55,7 +55,7 @@ public class PetDao {
 	public void updatePet(Pet pet) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Pet> updatePet = em.createQuery("update Pet p set p.name = :selectedName, p.species = :selectedSpecies, p.age = :selectedAge, p.coloring = :selectedColor, p.owner = :selectedOwner" + "where p.id = :selectedId", Pet.class);
+		TypedQuery<Pet> updatePet = em.createQuery("update Pet p set p.name = :selectedName, p.species = :selectedSpecies, p.age = :selectedAge, p.coloring = :selectedColor, p.owner = :selectedOwner" + "where p.petId = :selectedId", Pet.class);
 		updatePet.setParameter("selectedName", pet.getName());
 		updatePet.setParameter("selectedSpecies", pet.getSpecies());
 		updatePet.setParameter("selectedAge", pet.getAge());
