@@ -1,10 +1,17 @@
 package edu.dmacc.spring.petRegistry;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -44,6 +51,37 @@ public class PetRegistryController {
 		List<Owner> allOwners = ownerDao.getAllOwners();
 		modelAndView.setViewName("viewOwners");
 		modelAndView.addObject("allOwners", allOwners);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/editOwnerForm")
+	public ModelAndView ownerUpdate(HttpServletRequest request, HttpServletResponse response, int ownerId) {
+		ModelAndView modelAndView = new ModelAndView();
+		String act = request.getParameter("doThis");
+		if(act.equals("Add Pet")) {
+			Owner ownerToEdit = ownerDao.getOwner(ownerId);
+			modelAndView.setViewName("petForm");
+			modelAndView.addObject("owner", ownerToEdit);
+			modelAndView.addObject("pet", new Pet(ownerToEdit));
+		} else if(act.equals("Edit Owner Information")) {
+			Owner ownerToEdit = ownerDao.getOwner(ownerId);
+			request.setAttribute("ownerToEdit", ownerToEdit);
+			modelAndView.setViewName("editOwnerForm");
+			modelAndView.addObject("o", ownerToEdit);
+		}else if(act.equals("Delete Owner")) {
+			Owner ownerToDelete = ownerDao.getOwner(ownerId);
+			ownerDao.deleteOwner(ownerToDelete);
+			modelAndView.setViewName("viewOwners");
+		}
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/editOwnerResult")
+	public ModelAndView updateOwner(Owner owner) {
+		ModelAndView modelAndView = new ModelAndView();
+		ownerDao.updateOwner(owner);
+		modelAndView.setViewName("editOwnerResult");
+		modelAndView.addObject("o", owner);
 		return modelAndView;
 	}
 	

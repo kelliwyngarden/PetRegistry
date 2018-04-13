@@ -27,7 +27,7 @@ public class Pet {
 	}
 	
 	public Pet(Owner owner) {
-		this.setOwner(owner);;
+		this.setOwner(owner);
 	}
 	
 	public int getPetId() {
