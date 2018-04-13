@@ -10,8 +10,7 @@
 <title>View All Pets</title>
 </head>
 <body>
-<mvc:form modelAttribute = "post" action = "deletePet.mvc">
-<mvc:form modelAttribute = "post" action = "editPet.mvc">
+<mvc:form modelAttribute = "pet" action = "petUpdate.mvc">
 	<table>
 		<tr>
 		<th>Pet Id</th>
@@ -28,13 +27,11 @@
 				<td>${pet.species}</td>
 				<td>${pet.age}</td>
 				<td>${pet.coloring}</td>
-				<td>${pet.owner.firstName} ${pet.owner.lastName}</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<input type = "submit" value = "Edit Pet" >
-	</mvc:form>
-	<input type = "submit" value = "Remove Pet">
+	<input type = "submit" value = "Edit this Pet" name = "doThis">
+	<input type = "submit" value = "Remove this Pet" name = "doThis">
 </mvc:form>
 </body>
 </html>

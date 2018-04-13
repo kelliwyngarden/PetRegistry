@@ -2,6 +2,9 @@ package edu.dmacc.spring.petRegistry;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
@@ -53,7 +56,7 @@ public class PetRegistryController {
 		modelAndView.setViewName("petForm");
 		Owner owner = ownerDao.getOwner(ownerId);
 		modelAndView.addObject("owner", owner);
-		modelAndView.addObject("pet", new Pet(owner));
+		modelAndView.addObject("pet", new Pet());
 		return modelAndView;
 	}
 	
@@ -75,33 +78,35 @@ public class PetRegistryController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/editPet")
-	public ModelAndView editPet(int petId) {
-		ModelAndView modelAndView = new ModelAndView();
-		Pet pet = petDao.getPet(petId);
-		modelAndView.setViewName("editPetForm");
-		modelAndView.addObject("p", pet);
-		return modelAndView;
-	}
-	
 	@RequestMapping(value = "/editPetResult")
 	public ModelAndView editPetResult(Pet pet) {
 		ModelAndView modelAndView = new ModelAndView();
 		petDao.updatePet(pet);
-		List<Owner> allOwners = ownerDao.getAllOwners();
 		modelAndView.setViewName("editPetResult");
 		modelAndView.addObject("p", pet);
-		modelAndView.addObject("allOwners", allOwners);
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/deletePet")
-	public ModelAndView deletePet(int petId) {
+	@RequestMapping(value = "/petUpdate")
+	public ModelAndView updatePet(HttpServletRequest request, HttpServletResponse response, int petId) {
+		String act = request.getParameter("doThis");
 		ModelAndView modelAndView = new ModelAndView();
-		petDao.removePet(petId);
-		List<Pet> allPets = petDao.getAllPets();
-		modelAndView.setViewName("viewAllPets");
-		modelAndView.addObject("allPets", allPets);
+		if(act.equals("Edit this Pet")) {
+//			Integer tempId = Integer.parseInt(request.getParameter("petId"));
+			Pet petToEdit = petDao.getPet(petId);
+			request.setAttribute("petToEdit", petToEdit);
+			modelAndView.setViewName("editPetForm");
+			modelAndView.addObject("pet", petToEdit);
+		}
+		
+		else if(act.equals("Remove this Pet")) {
+//			Integer tempId = Integer.parseInt(request.getParameter("petId"));
+			petDao.removePet(petId);
+			List<Pet> allPets = petDao.getAllPets();
+			modelAndView.setViewName("viewAllPets");
+			modelAndView.addObject("allPets", allPets);
+		}
+		
 		return modelAndView;
 	}
 	
