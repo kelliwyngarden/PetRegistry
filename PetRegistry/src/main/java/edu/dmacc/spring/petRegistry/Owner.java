@@ -54,6 +54,19 @@ public class Owner {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public Owner(int ownerId, String firstName, String lastName, String phone, String email, String address) {
+		super();
+		this.ownerId = ownerId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phone = phone;
+		this.email = email;
+		this.address = address;
+	}
+	public Owner() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 }

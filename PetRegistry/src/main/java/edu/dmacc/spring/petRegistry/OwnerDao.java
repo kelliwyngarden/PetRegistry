@@ -18,6 +18,30 @@ public class OwnerDao {
 		em.getTransaction().commit();
 		em.close();
 	}
+	
+	public void updateOwner(Owner ownerToEdit) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(ownerToEdit);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public void deleteOwner(Owner ownerToDelete) {
+		// TODO Auto-generated method stub
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		Owner find = em.find(Owner.class, ownerToDelete.getOwnerId());
+		//TypedQuery<Pet> q = em.createQuery("select p from Pet p where p.ownerId = :selectedOwnerId", Pet.class);
+		//q.setParameter("selectedOwnerId", ownerToDelete.getOwnerId());
+		//List<Pet> allPets = q.getResultList();
+		//if(allPets != null) {
+		//	em.remove(allPets);
+		//}
+		em.remove(find);
+		em.getTransaction().commit();
+		em.close();
+	}
 
 	public List<Owner> getAllOwners() {
 		// TODO Auto-generated method stub
@@ -40,5 +64,8 @@ public class OwnerDao {
 		return owner;
 	}
 	
-	
+	public void cleanUp() {
+		emfactory.close();
+	}
+
 }
