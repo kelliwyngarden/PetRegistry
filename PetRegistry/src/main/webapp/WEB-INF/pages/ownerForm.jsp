@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Owner Registration Form</title>
 </head>
 <body>
 <h2>Owner Registration Form</h2>
@@ -40,6 +40,6 @@
 	</table>
 </mvc:form>
 <a href = "petForm.mvc">Add Pet</a>
-<a href = "viewAllOwners.mvc">View All Owners</a>
+<a href = "viewOwners.mvc">View All Owners</a>
 </body>
 </html>
