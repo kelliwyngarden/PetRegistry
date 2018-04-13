@@ -30,8 +30,7 @@
 			<td><mvc:input path = "coloring" /></td>
 		</tr>
 		<tr>
-			<td><mvc:label path = "owner">Owner ID</mvc:label></td>
-			<td><mvc:label path = "owner">${pet.owner.ownerId}</mvc:label>
+			<td><mvc:input path = "ownerId" type = "hidden" value = "${owner.ownerId}" /> </td>
 		</tr>
 		<tr>
 			<td colspan = "2">

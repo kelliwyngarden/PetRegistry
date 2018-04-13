@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,16 +16,14 @@ public class Pet {
 	private String species;
 	private String age;
 	private String coloring;
-	@ManyToOne
-	@JoinColumn(name="ownerId")
-	private Owner owner;
+	private int ownerId;
 	
 	public Pet() {
 		
 	}
 	
-	public Pet(Owner owner) {
-		this.setOwner(owner);;
+	public Pet(int ownerId) {
+		this.setOwnerId(ownerId);
 	}
 	
 	public int getPetId() {
@@ -60,11 +56,11 @@ public class Pet {
 	public void setColoring(String coloring) {
 		this.coloring = coloring;
 	}
-	public Owner getOwner() {
-		return owner;
+	public int getOwnerId() {
+		return ownerId;
 	}
-	public void setOwner(Owner owner) {
-		this.owner = owner;
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
 	}
 	
 	

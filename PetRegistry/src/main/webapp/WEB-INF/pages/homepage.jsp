@@ -24,8 +24,7 @@ a:hover, a:active {
 </head>
 <body>
 	<a href = "ownerForm.mvc">Add Pet Owner</a>
-<!-- 	<a href = "petForm.mvc">Add Pet</a> <br /> This should go under View All owners to get around issue with assigning pet to owner -->
 	<a href = "viewOwners.mvc">View All Owners</a>
-	<a href = "viewPets.mvc">View All Pets</a>
+	<a href = "viewAllPets.mvc">View All Pets</a>
 </body>
 </html>

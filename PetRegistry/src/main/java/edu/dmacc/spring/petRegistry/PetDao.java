@@ -21,12 +21,10 @@ public class PetDao {
 	
 	public Pet getPet(int petId) {
 		EntityManager em = emfactory.createEntityManager();
-		em.getTransaction().commit();
-		String q = "select p from Pet p where p.petId = :selectedId";
-		TypedQuery<Pet> getPet = em.createQuery(q, Pet.class);
-		getPet.setParameter("selectedId", petId);
-		Pet pet = getPet.getSingleResult();
-		return pet;
+		em.getTransaction().begin();
+		Pet foundPet = em.find(Pet.class,  petId);
+		em.close();
+		return foundPet;
 	}
 	
 	public List<Pet> getAllPets() {
@@ -55,13 +53,13 @@ public class PetDao {
 	public void updatePet(Pet pet) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Pet> updatePet = em.createQuery("update Pet p set p.name = :selectedName, p.species = :selectedSpecies, p.age = :selectedAge, p.coloring = :selectedColor, p.owner = :selectedOwner" + "where p.petId = :selectedId", Pet.class);
-		updatePet.setParameter("selectedName", pet.getName());
-		updatePet.setParameter("selectedSpecies", pet.getSpecies());
-		updatePet.setParameter("selectedAge", pet.getAge());
-		updatePet.setParameter("selectedColor", pet.getColoring());
-		updatePet.setParameter("selectedOwner", pet.getOwner());
-		updatePet.setParameter("selectedId", pet.getPetId());
+		String q = "update Pet p set p.name = :name, p.species = :species, p.age = :age, p.coloring = :coloring " + "where p.petId = :id";
+		TypedQuery<Pet> updatePet = em.createQuery(q, Pet.class);
+		updatePet.setParameter("name", pet.getName());
+		updatePet.setParameter("species", pet.getSpecies());
+		updatePet.setParameter("age", pet.getAge());
+		updatePet.setParameter("coloring", pet.getColoring());
+		updatePet.setParameter("id", pet.getPetId());
 		int updateCount = updatePet.executeUpdate();
 		if(updateCount>0) {
 			System.out.println("Pet Updated");
