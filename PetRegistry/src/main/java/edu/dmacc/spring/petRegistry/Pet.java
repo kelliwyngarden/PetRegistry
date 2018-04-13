@@ -21,10 +21,7 @@ public class Pet {
 	public Pet() {
 		
 	}
-	
-	public Pet(int ownerId) {
-		this.setOwnerId(ownerId);
-	}
+
 	
 	public int getPetId() {
 		return petId;

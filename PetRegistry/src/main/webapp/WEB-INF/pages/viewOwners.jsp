@@ -10,7 +10,7 @@
 <title>All Registered Owners</title>
 </head>
 <body>
-<mvc:form modelAttribute = "post" action = "petForm.mvc">
+<mvc:form modelAttribute = "owner" action = "editOwnerForm.mvc">
 	<c:forEach items = "${allOwners}" var = "owner">
 		<table>
 			<tr>
@@ -41,9 +41,10 @@
 		<hr style = "text-align: left; margin-left: 0; width: 25%">
 		<br/>
 	</c:forEach>
-	<input type = "submit" value = "Add Pet">
+	<input type = "submit" value = "Add Pet" name = "doThis">
+	<input type = "submit" value = "Edit Owner Information" name = "doThis">
+	<input type = "submit" value = "Delete Owner" name = "doThis">
 </mvc:form>
-	<a href = "petForm.mvc">Add Pet</a> <br />
 	<a href = "ownerForm.mvc">Add New Pet Owner</a>
 </body>
 </html>
