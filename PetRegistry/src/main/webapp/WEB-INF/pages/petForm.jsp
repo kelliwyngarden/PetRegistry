@@ -10,6 +10,7 @@
 </head>
 <body>
 <h2>Pet Registration Form</h2>
+<p>Adding Pet to Owner ${owner.ownerId}: ${owner.firstName} ${owner.lastName}<p>
 <mvc:form modelAttribute = "pet" action = "petResult.mvc">
 	<table>
 		<tr>
@@ -27,6 +28,10 @@
 		<tr>
 			<td><mvc:label path = "coloring">Coloring</mvc:label></td>
 			<td><mvc:input path = "coloring" /></td>
+		</tr>
+		<tr>
+			<td><mvc:label path = "owner">Owner ID</mvc:label></td>
+			<td><mvc:label path = "owner">${pet.owner.ownerId}</mvc:label>
 		</tr>
 		<tr>
 			<td colspan = "2">

@@ -48,10 +48,12 @@ public class PetRegistryController {
 	}
 	
 	@RequestMapping(value = "/petForm")
-	public ModelAndView petForm() {
+	public ModelAndView petForm(int ownerId) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("petForm");
-		modelAndView.addObject("pet", new Pet());
+		Owner owner = ownerDao.getOwner(ownerId);
+		modelAndView.addObject("owner", owner);
+		modelAndView.addObject("pet", new Pet(owner));
 		return modelAndView;
 	}
 	
@@ -61,6 +63,45 @@ public class PetRegistryController {
 		petDao.insertPet(pet);
 		modelAndView.setViewName("petResult");
 		modelAndView.addObject("p", pet);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/viewAllPets")
+	public ModelAndView viewAllPets() {
+		ModelAndView modelAndView = new ModelAndView();
+		List<Pet> allPets = petDao.getAllPets();
+		modelAndView.setViewName("viewAllPets");
+		modelAndView.addObject("allPets", allPets);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/editPet")
+	public ModelAndView editPet(int petId) {
+		ModelAndView modelAndView = new ModelAndView();
+		Pet pet = petDao.getPet(petId);
+		modelAndView.setViewName("editPetForm");
+		modelAndView.addObject("p", pet);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/editPetResult")
+	public ModelAndView editPetResult(Pet pet) {
+		ModelAndView modelAndView = new ModelAndView();
+		petDao.updatePet(pet);
+		List<Owner> allOwners = ownerDao.getAllOwners();
+		modelAndView.setViewName("editPetResult");
+		modelAndView.addObject("p", pet);
+		modelAndView.addObject("allOwners", allOwners);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/deletePet")
+	public ModelAndView deletePet(int petId) {
+		ModelAndView modelAndView = new ModelAndView();
+		petDao.removePet(petId);
+		List<Pet> allPets = petDao.getAllPets();
+		modelAndView.setViewName("viewAllPets");
+		modelAndView.addObject("allPets", allPets);
 		return modelAndView;
 	}
 	

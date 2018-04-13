@@ -29,5 +29,16 @@ public class OwnerDao {
 		return allOwners;
 	}
 	
+	public Owner getOwner(int ownerId) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		String q = "select o from Owner o where o.ownerId = :selectedId";
+		TypedQuery<Owner> typedQuery = em.createQuery(q, Owner.class);
+		typedQuery.setParameter("selectedId", ownerId);
+		Owner owner = typedQuery.getSingleResult();
+		em.close();
+		return owner;
+	}
+	
 	
 }
