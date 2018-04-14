@@ -7,39 +7,58 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Pet Registration Form</title>
+<style><%@include file="/WEB-INF/css/cssFile.css"%></style>
+<script type="text/javascript">
+//auto expand textarea
+function adjust_textarea(h) {
+    h.style.height = "20px";
+    h.style.height = (h.scrollHeight)+"px";
+}
+</script>
 </head>
 <body>
-<h2>Pet Registration Form</h2>
-<p>Adding Pet to Owner ${owner.ownerId}: ${owner.firstName} ${owner.lastName}<p>
-<mvc:form modelAttribute = "pet" action = "petResult.mvc">
-	<table>
-		<tr>
-			<td><mvc:label path = "name">Pet Name</mvc:label></td>
-			<td><mvc:input path = "name" /></td>
-		</tr>
-		<tr>
-			<td><mvc:label path = "species">Species</mvc:label></td>
-			<td><mvc:input path = "species" /></td>
-		</tr>
-		<tr>
-			<td><mvc:label path = "age">Age</mvc:label></td>
-			<td><mvc:input path = "age" /></td>
-		</tr>
-		<tr>
-			<td><mvc:label path = "coloring">Coloring</mvc:label></td>
-			<td><mvc:input path = "coloring" /></td>
-		</tr>
-		<tr>
-			<td><mvc:input path = "ownerId" type = "hidden" value = "${owner.ownerId}" /> </td>
-		</tr>
-		<tr>
-			<td colspan = "2">
-				<input type = "submit" value = "Submit" />
-			</td>
-		</tr>
-	</table>
-</mvc:form>
-<a href = "viewAllPets.mvc">View All Pets</a>
-<a href = "homepage.mvc">Return Home</a>
+<div  class = "page-wrapper">
+	<h1>Pet Registration Form</h1>
+	<div class = "page-divider"></div>
+	<mvc:form modelAttribute = "pet" action = "petResult.mvc" class="form-style">
+		<h2>Adding Pet to Owner ${owner.ownerId}: ${owner.firstName} ${owner.lastName}</h2>
+		<ul>
+			<li>
+				<mvc:label path = "name" type = "text">Pet Name</mvc:label>
+				<mvc:input path = "name" />
+				<span>Enter Pet Name</span>
+			</li>
+			<li>
+				<mvc:label path = "species">Species</mvc:label>
+				<mvc:input path = "species" />
+				<span>Enter Pet Species</span>
+			</li>
+			<li>
+				<mvc:label path = "age">Age</mvc:label>
+				<mvc:input path = "age" />
+				<span>Enter Pet Age</span>
+			</li>
+			<li>
+				<mvc:label path = "coloring">Coloring</mvc:label>
+				<mvc:input path = "coloring" />
+				<span>Enter Pet Color</span>
+			</li>
+			<li>
+				<input type = "submit" value = "Submit" />		
+			</li>
+		</ul>
+		<mvc:input path = "ownerId" type = "hidden" value = "${owner.ownerId}" />
+	</mvc:form>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="viewAllPets.mvc">View All Pets</a>
+	  </span>
+	</div>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="homepage.mvc">Return Home</a>
+	  </span>
+	</div>
+</div>
 </body>
 </html>

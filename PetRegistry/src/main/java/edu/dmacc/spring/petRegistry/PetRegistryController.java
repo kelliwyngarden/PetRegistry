@@ -96,8 +96,10 @@ public class PetRegistryController {
 	public ModelAndView processPet(Pet pet) {
 		ModelAndView modelAndView = new ModelAndView();
 		petDao.insertPet(pet);
+		List<Owner> allOwners = ownerDao.getAllOwners();
 		modelAndView.setViewName("petResult");
 		modelAndView.addObject("p", pet);
+		modelAndView.addObject("allOwners", allOwners);
 		return modelAndView;
 	}
 	
@@ -116,8 +118,10 @@ public class PetRegistryController {
 	public ModelAndView editPetResult(Pet pet) {
 		ModelAndView modelAndView = new ModelAndView();
 		petDao.updatePet(pet);
+		List<Owner> allOwners = ownerDao.getAllOwners();
 		modelAndView.setViewName("editPetResult");
 		modelAndView.addObject("p", pet);
+		modelAndView.addObject("allOwners", allOwners);
 		return modelAndView;
 	}
 	

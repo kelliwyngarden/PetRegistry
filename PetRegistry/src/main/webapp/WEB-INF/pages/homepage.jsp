@@ -5,24 +5,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Pet Registry Homepage</title>
-<style><%@include file="/WEB-INF/pages/cssFile.css"%></style>
+<style><%@include file="/WEB-INF/css/cssFile.css"%></style>
 </head>
 <body>
-
-<div class="wrapper">
-  <span class="square">
-    <a class="tenth before after" href="ownerForm.mvc">Add Pet Owner</a>
-  </span>
-</div>
-<div class="wrapper">
-  <span class="square">
-    <a class="tenth before after" href="viewOwners.mvc">View All Owners</a>
-  </span>
-</div>
-<div class="wrapper">
-  <span class="square">
-    <a class="tenth before after" href="viewAllPets.mvc">View All Pets</a>
-  </span>
+<div class = "page-wrapper">
+	<h1>Pet Registry</h1>
+	<div class = "page-divider"></div>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="ownerForm.mvc">Add Pet Owner</a>
+	  </span>
+	</div>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="viewOwners.mvc">View All Owners</a>
+	  </span>
+	</div>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="viewAllPets.mvc">View All Pets</a>
+	  </span>
+	</div>
 </div>
 </body>
 </html>

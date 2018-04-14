@@ -8,35 +8,77 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>View All Pets</title>
+<style><%@include file="/WEB-INF/css/cssFile.css"%></style>
 </head>
 <body>
-<mvc:form modelAttribute = "pet" action = "petUpdate.mvc">
-	<table>
-		<tr>
-		<th>Pet Id</th>
-			<th>Pet Name</th>
-			<th>Pet Species</th>
-			<th>Pet Age</th>
-			<th>Pet Coloring</th>
-			<th>Owner Name</th>
-		</tr>
-		<c:forEach items = "${allPets}" var = "pet">
-			<tr>
-				<td><input type = "radio" name = "petId" value = "${pet.petId}">${pet.petId}</td>
-				<td>${pet.name}</td>
-				<td>${pet.species}</td>
-				<td>${pet.age}</td>
-				<td>${pet.coloring}</td>
-				<c:forEach items = "${allOwners}" var = "owner">
-					<c:if test = "${pet.ownerId == owner.ownerId}">
-						<td>${owner.firstName} ${owner.lastName}</td>
-					</c:if>
-				</c:forEach>
-			</tr>
-		</c:forEach>
-	</table>
-	<input type = "submit" value = "Edit this Pet" name = "doThis">
-	<input type = "submit" value = "Remove this Pet" name = "doThis">
-</mvc:form>
+<div class = "page-wrapper">
+	<h1>View All Pets</h1>
+	<div class = "page-divider"></div>
+	<mvc:form modelAttribute = "pet" action = "petUpdate.mvc">
+			<c:forEach items = "${allPets}" var = "pet">
+				<div class = "result-style">
+					<h2>Pet Entry</h2>
+					<div>
+						<ul>
+							<li class = "split align-left">
+								<label>Select Pet</label>
+								<p><input type = "radio" name = "petId" value = "${pet.petId}"></p>
+							</li>
+							<li class = "split align-right">
+								<label>Pet Name</label>
+								<p>${pet.name}</p>
+							</li>
+						</ul>
+						<div class = "clear"></div>
+					</div>
+					<div>
+						<ul>
+							<li class = "split align-left">
+								<label>Species</label>
+								<p>${pet.species}</p>
+							</li>
+							<li class = "split align-right">
+								<label>Age</label>
+								<p>${pet.age}</p>
+							</li>
+						</ul>
+						<div class = "clear"></div>
+					</div>
+					<div>
+						<ul>
+							<li class = "split align-left">
+								<label>Color</label>
+								<p>${pet.coloring}</p>
+							</li>
+							<c:forEach items = "${allOwners}" var = "owner">
+								<c:if test = "${pet.ownerId == owner.ownerId}">
+									<li class = "split align-right">
+										<label>Owner</label>
+										<p>${owner.firstName} ${owner.lastName}</p>
+									</li>
+								</c:if>
+							</c:forEach>
+						</ul>
+						<div class = "clear"></div>
+					</div>
+				</div>
+			</c:forEach>
+			<div class = "result-style">
+				<input type = "submit" value = "Edit this Pet" name = "doThis">
+				<input type = "submit" value = "Remove this Pet" name = "doThis">
+			</div>
+	</mvc:form>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="homepage.mvc">Return Home</a>
+	  </span>
+	</div>
+</div>
 </body>
 </html>
+
+<!-- <li> -->
+<!--     <input type="text" name="field1" class="field-style field-split align-left" placeholder="Name" /> -->
+<!--     <input type="email" name="field2" class="field-style field-split align-right" placeholder="Email" /> -->
+
+<!-- </li> -->
