@@ -105,8 +105,10 @@ public class PetRegistryController {
 	public ModelAndView viewAllPets() {
 		ModelAndView modelAndView = new ModelAndView();
 		List<Pet> allPets = petDao.getAllPets();
+		List<Owner> allOwners = ownerDao.getAllOwners();
 		modelAndView.setViewName("viewAllPets");
 		modelAndView.addObject("allPets", allPets);
+		modelAndView.addObject("allOwners", allOwners);
 		return modelAndView;
 	}
 	
@@ -124,15 +126,11 @@ public class PetRegistryController {
 		String act = request.getParameter("doThis");
 		ModelAndView modelAndView = new ModelAndView();
 		if(act.equals("Edit this Pet")) {
-//			Integer tempId = Integer.parseInt(request.getParameter("petId"));
 			Pet petToEdit = petDao.getPet(petId);
 			request.setAttribute("petToEdit", petToEdit);
 			modelAndView.setViewName("editPetForm");
 			modelAndView.addObject("pet", petToEdit);
-		}
-		
-		else if(act.equals("Remove this Pet")) {
-//			Integer tempId = Integer.parseInt(request.getParameter("petId"));
+		} else if(act.equals("Remove this Pet")) {
 			petDao.removePet(petId);
 			List<Pet> allPets = petDao.getAllPets();
 			modelAndView.setViewName("viewAllPets");

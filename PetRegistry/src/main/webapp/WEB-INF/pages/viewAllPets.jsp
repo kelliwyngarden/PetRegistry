@@ -27,6 +27,11 @@
 				<td>${pet.species}</td>
 				<td>${pet.age}</td>
 				<td>${pet.coloring}</td>
+				<c:forEach items = "${allOwners}" var = "owner">
+					<c:if test = "${pet.ownerId == owner.ownerId}">
+						<td>${owner.firstName} ${owner.lastName}</td>
+					</c:if>
+				</c:forEach>
 			</tr>
 		</c:forEach>
 	</table>

@@ -29,6 +29,10 @@
 			<td><mvc:input path = "coloring"  value = "${pet.coloring}"/></td>
 		</tr>
 		<tr>
+			<td><mvc:input type = "hidden" path = "petId" value = "${pet.petId}" /></td>
+			<td><mvc:input type = "hidden" path = "ownerId" value = "${pet.ownerId}" /></td>
+		</tr>
+		<tr>
 			<td colspan = "2">
 				<input type = "submit" value = "Submit" />
 			</td>

@@ -5,26 +5,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Pet Registry Homepage</title>
-<style>
-a:link, a:visited {
-    background-color: #144eaa;
-    color: white;
-    padding: 14px 25px;
-    text-align: center; 
-    text-decoration: none;
-    display: inline-block;
-    margin:10px;
-    width:100px;
-}
-
-a:hover, a:active {
-    background-color: #1556bf;
-}
-</style>
+<style><%@include file="/WEB-INF/pages/cssFile.css"%></style>
 </head>
 <body>
-	<a href = "ownerForm.mvc">Add Pet Owner</a>
-	<a href = "viewOwners.mvc">View All Owners</a>
-	<a href = "viewAllPets.mvc">View All Pets</a>
+
+<div class="wrapper">
+  <span class="square">
+    <a class="tenth before after" href="ownerForm.mvc">Add Pet Owner</a>
+  </span>
+</div>
+<div class="wrapper">
+  <span class="square">
+    <a class="tenth before after" href="viewOwners.mvc">View All Owners</a>
+  </span>
+</div>
+<div class="wrapper">
+  <span class="square">
+    <a class="tenth before after" href="viewAllPets.mvc">View All Pets</a>
+  </span>
+</div>
 </body>
 </html>
