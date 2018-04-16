@@ -6,8 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.eclipse.persistence.annotations.CascadeOnDelete;
+
 @Entity
 @Table(name = "pet")
+@CascadeOnDelete
 public class Pet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

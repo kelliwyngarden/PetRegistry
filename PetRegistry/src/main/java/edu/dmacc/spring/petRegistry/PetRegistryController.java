@@ -64,7 +64,7 @@ public class PetRegistryController {
 			Owner ownerToEdit = ownerDao.getOwner(ownerId);
 			request.setAttribute("ownerToEdit", ownerToEdit);
 			modelAndView.setViewName("editOwnerForm");
-			modelAndView.addObject("o", ownerToEdit);
+			modelAndView.addObject("owner", ownerToEdit);
 		}else if(act.equals("Delete Owner")) {
 			Owner ownerToDelete = ownerDao.getOwner(ownerId);
 			ownerDao.deleteOwner(ownerToDelete);

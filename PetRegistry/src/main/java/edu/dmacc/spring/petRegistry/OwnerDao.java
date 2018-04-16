@@ -32,12 +32,6 @@ public class OwnerDao {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		Owner find = em.find(Owner.class, ownerToDelete.getOwnerId());
-		//TypedQuery<Pet> q = em.createQuery("select p from Pet p where p.ownerId = :selectedOwnerId", Pet.class);
-		//q.setParameter("selectedOwnerId", ownerToDelete.getOwnerId());
-		//List<Pet> allPets = q.getResultList();
-		//if(allPets != null) {
-		//	em.remove(allPets);
-		//}
 		em.remove(find);
 		em.getTransaction().commit();
 		em.close();
@@ -50,6 +44,7 @@ public class OwnerDao {
 		String q = "select o from Owner o";
 		TypedQuery<Owner> typedQuery = em.createQuery(q, Owner.class);
 		List<Owner> allOwners = typedQuery.getResultList();
+		em.close();
 		return allOwners;
 	}
 	

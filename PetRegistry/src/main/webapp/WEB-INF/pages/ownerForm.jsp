@@ -7,39 +7,62 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Owner Registration Form</title>
+<style><%@include file="/WEB-INF/css/cssFile.css"%></style>
+<script type="text/javascript">
+//auto expand textarea
+function adjust_textarea(h) {
+    h.style.height = "20px";
+    h.style.height = (h.scrollHeight)+"px";
+}
+</script>
 </head>
 <body>
-<h2>Owner Registration Form</h2>
-<mvc:form modelAttribute = "owner" action = "ownerResult.mvc">
-	<table>
-		<tr>
-			<td><mvc:label path = "firstName">First Name</mvc:label></td>
-			<td><mvc:input path = "firstName"/></td>
-		</tr>
-		<tr>
-			<td><mvc:label path = "lastName">Last Name</mvc:label></td>
-			<td><mvc:input path = "lastName"/></td>
-		</tr>
-		<tr>
-			<td><mvc:label path = "phone">Phone Number</mvc:label></td>
-			<td><mvc:input path = "phone"/></td>
-		</tr>
-		<tr>
-			<td><mvc:label path = "email">Email</mvc:label></td>
-			<td><mvc:input path = "email"/></td>
-		</tr>
-		<tr>
-			<td><mvc:label path = "address">Address</mvc:label></td>
-			<td><mvc:input path = "address"/></td>
-		</tr>
-		<tr>
-			<td colspan = "2">
-				<input type = "submit" value = "Submit"/>
-			</td>
-		</tr>
-	</table>
-</mvc:form>
-<a href = "petForm.mvc">Add Pet</a>
-<a href = "viewOwners.mvc">View All Owners</a>
+<div  class = "page-wrapper">
+	<h1>Owner Registration Form</h1>
+	<div class = "page-divider"></div>
+	<mvc:form modelAttribute = "owner" action = "ownerResult.mvc" class="form-style">
+		<h2>Adding New Owner</h2>
+		<ul>
+			<li>
+				<mvc:label path = "firstName">First Name</mvc:label>
+				<mvc:input path = "firstName"/>
+				<span>Enter First Name</span>
+			</li>
+			<li>
+				<mvc:label path = "lastName">Last Name</mvc:label>
+				<mvc:input path = "lastName"/>
+				<span>Enter Last Name</span>
+			</li>
+			<li>
+				<mvc:label path = "phone">Phone Number</mvc:label>
+				<mvc:input path = "phone"/>
+				<span>Enter Phone Number</span>
+			</li>
+			<li>
+				<mvc:label path = "email">Email</mvc:label>
+				<mvc:input path = "email"/>
+				<span>Enter Email Address</span>
+			</li>
+			<li>
+				<mvc:label path = "address">Address</mvc:label>
+				<mvc:input path = "address"/>
+				<span>Enter Address</span>
+			</li>
+			<li>
+				<input type = "submit" value = "Submit" />		
+			</li>
+		</ul>
+	</mvc:form>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href = "viewOwners.mvc">View All Owners</a>
+	  </span>
+	 </div>
+	 <div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="homepage.mvc">Return Home</a>
+	  </span>
+	</div>
+</div>
 </body>
 </html>

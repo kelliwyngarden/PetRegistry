@@ -7,44 +7,68 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>All Registered Owners</title>
+<title>View All Owners</title>
+<style><%@include file="/WEB-INF/css/cssFile.css"%></style>
 </head>
 <body>
-<mvc:form modelAttribute = "owner" action = "editOwnerForm.mvc">
-	<c:forEach items = "${allOwners}" var = "owner">
-		<table>
-			<tr>
-				<td><input type ="radio" name = "ownerId" value = "${owner.ownerId}">${owner.ownerId}</td>
-			</tr>
-			<tr>
-				<td>First Name</td>
-				<td >${owner.firstName}</td>
-			</tr>
-			<tr>
-				<td>Last Name</td>
-				<td>${owner.lastName}</td>
-			</tr>
-			<tr>
-				<td>Phone Number</td>
-				<td>${owner.phone}</td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td>${owner.email}</td>
-			</tr>
-			<tr>
-				<td>Address</td>
-				<td>${owner.address}</td>
-			</tr>
-		</table>
-		<br/>
-		<hr style = "text-align: left; margin-left: 0; width: 25%">
-		<br/>
-	</c:forEach>
-	<input type = "submit" value = "Add Pet" name = "doThis">
-	<input type = "submit" value = "Edit Owner Information" name = "doThis">
-	<input type = "submit" value = "Delete Owner" name = "doThis">
-</mvc:form>
-	<a href = "ownerForm.mvc">Add New Pet Owner</a>
+<div class = "page-wrapper">
+	<h1>View All Owners</h1>
+	<div class = "page-divider"></div>
+	<mvc:form modelAttribute = "owner" action = "editOwnerForm.mvc">
+		<c:forEach items = "${allOwners}" var = "owner">
+			<div class = "result-style">
+					<h2>Owner Entry</h2>
+					<div>
+						<ul>
+							<li class = "split align-left">
+								<label>Select Owner</label>
+								<p><input type ="radio" name = "ownerId" value = "${owner.ownerId}"></p>
+							</li>
+							<li class = "split align-right">
+								<label>First Name</label>
+								<p>${owner.firstName}</p>
+							</li>
+						</ul>
+						<div class = "clear"></div>
+					</div>
+					<div>
+						<ul>
+							<li class = "split align-left">
+								<label>Last Name</label>
+								<p>${owner.lastName}</p>
+							</li>
+							<li class = "split align-right">
+								<label>Phone Number</label>
+								<p>${owner.phone}</p>
+							</li>
+						</ul>
+						<div class = "clear"></div>
+					</div>
+					<div>
+						<ul>
+							<li class = "split align-left">
+								<label>Email</label>
+								<p>${owner.email}</p>
+							</li>
+							<li class = "split align-right">
+								<label>Address</label>
+								<p>${owner.address}</p>
+							</li>
+						</ul>
+						<div class = "clear"></div>
+					</div>
+				</div>
+			</c:forEach>
+			<div class = "result-style">
+				<input type = "submit" value = "Add Pet" name = "doThis">
+				<input type = "submit" value = "Edit Owner Information" name = "doThis">
+				<input type = "submit" value = "Delete Owner" name = "doThis">
+			</div>
+	</mvc:form>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="homepage.mvc">Return Home</a>
+	  </span>
+	</div>
 </body>
 </html>
