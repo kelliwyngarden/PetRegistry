@@ -7,33 +7,56 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit Pet Form</title>
+<style><%@include file="/WEB-INF/css/cssFile.css"%></style>
+<script type="text/javascript">
+//auto expand textarea
+function adjust_textarea(h) {
+    h.style.height = "20px";
+    h.style.height = (h.scrollHeight)+"px";
+}
+</script>
 </head>
 <body>
-<mvc:form modelAttribute = "pet" action = "editPetResult.mvc">
-	<table>
-		<tr>
-			<td><mvc:label path = "name">Pet Name</mvc:label></td>
-			<td><mvc:input path = "name" value = "${pet.name}"/></td>
-		</tr>
-		<tr>
-			<td><mvc:label path = "species">Species</mvc:label></td>
-			<td><mvc:input path = "species"  value = "${pet.species}"/></td>
-		</tr>
-		<tr>
-			<td><mvc:label path = "age">Age</mvc:label></td>
-			<td><mvc:input path = "age"  value = "${pet.age}"/></td>
-		</tr>
-		<tr>
-			<td><mvc:label path = "coloring">Coloring</mvc:label></td>
-			<td><mvc:input path = "coloring"  value = "${pet.coloring}"/></td>
-		</tr>
-		<tr>
-			<td colspan = "2">
-				<input type = "submit" value = "Submit" />
-			</td>
-		</tr>
-	</table>
-</mvc:form>
+<div class = "page-wrapper">
+	<h1>Edit Pet Form</h1>
+	<div class = "page-divider"></div>
+	<mvc:form modelAttribute = "pet" action = "editPetResult.mvc" class = "form-style">
+		<h2>Editing Pet</h2>
+			<ul>
+				<li>
+					<mvc:label path = "name">Pet Name</mvc:label>
+					<mvc:input path = "name" value = "${pet.name}"/>
+				</li>
+				<li>
+					<mvc:label path = "species">Species</mvc:label>
+					<mvc:input path = "species"  value = "${pet.species}"/>
+				</li>
+				<li>
+					<mvc:label path = "age">Age</mvc:label>
+					<mvc:input path = "age"  value = "${pet.age}"/>
+				</li>
+				<li>
+					<mvc:label path = "coloring">Coloring</mvc:label>
+					<mvc:input path = "coloring"  value = "${pet.coloring}"/>
+				</li>
+				<li>
+					<input type = "submit" value = "Submit" />
+				</li>
+		</ul>
+		<mvc:input type = "hidden" path = "petId" value = "${pet.petId}" />
+		<mvc:input type = "hidden" path = "ownerId" value = "${pet.ownerId}" />
+	</mvc:form>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="viewAllPets.mvc">Cancel Edit</a>
+	  </span>
+	</div>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="homepage.mvc">Return Home</a>
+	  </span>
+	</div>
+</div>
 </body>
 </html>

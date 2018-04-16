@@ -50,21 +50,20 @@ public class PetDao {
 		em.close();
 	}
 	
-	public void updatePet(Pet pet) {
+	public void updatePet(Pet p) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		String q = "update Pet p set p.name = :name, p.species = :species, p.age = :age, p.coloring = :coloring " + "where p.petId = :id";
-		TypedQuery<Pet> updatePet = em.createQuery(q, Pet.class);
-		updatePet.setParameter("name", pet.getName());
-		updatePet.setParameter("species", pet.getSpecies());
-		updatePet.setParameter("age", pet.getAge());
-		updatePet.setParameter("coloring", pet.getColoring());
-		updatePet.setParameter("id", pet.getPetId());
-		int updateCount = updatePet.executeUpdate();
-		if(updateCount>0) {
-			System.out.println("Pet Updated");
-		}
+		System.out.println(p.getAge());
+		TypedQuery<Pet> updatePet = em.createQuery("UPDATE Pet p SET p.name = :name, p.species = :species, p.age = :age, p.coloring = :coloring, p.ownerId = :ownerId" + " WHERE p.petId = :id", Pet.class);
+		updatePet.setParameter("name", p.getName());
+		updatePet.setParameter("species", p.getSpecies());
+		updatePet.setParameter("age", p.getAge());
+		updatePet.setParameter("coloring", p.getColoring());
+		updatePet.setParameter("ownerId", p.getOwnerId());
+		updatePet.setParameter("id", p.getPetId());
+		updatePet.executeUpdate();
 		em.getTransaction().commit();
 		em.close();
 	}
+	
 }
