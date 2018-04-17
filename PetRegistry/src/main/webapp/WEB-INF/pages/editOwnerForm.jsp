@@ -7,10 +7,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Edit Owner Information</title>
+<style><%@include file="/WEB-INF/css/cssFile.css"%></style>
+<script type="text/javascript">
+//auto expand textarea
+function adjust_textarea(h) {
+    h.style.height = "20px";
+    h.style.height = (h.scrollHeight)+"px";
+}
+</script>
 </head>
 <body>
-<h1>Edit Owner Information</h1>
-	<mvc:form modelAttribute = "owner" action = "editOwnerResult.mvc">
+<div class = "page-wrapper">
+	<h1>Edit Owner Form</h1>
+	<div class = "page-divider"></div>
+	<mvc:form modelAttribute = "owner" action = "editOwnerResult.mvc" class = "form-style">
 	<h2>Editing Owner</h2>
 		<ul>
 			<li>
@@ -37,7 +47,18 @@
 				<input type = "submit" value = "Submit" />
 			</li>
 		</ul>
-	<mvc:input type = "hidden" path = "ownerId" value = "${owner.ownerId}"/>
-</mvc:form>
+		<mvc:input type = "hidden" path = "ownerId" value = "${owner.ownerId}"/>
+	</mvc:form>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="viewOwners.mvc">Cancel Edit</a>
+	  </span>
+	</div>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="homepage.mvc">Return Home</a>
+	  </span>
+	</div>
+</div>
 </body>
 </html>

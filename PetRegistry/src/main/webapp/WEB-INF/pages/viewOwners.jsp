@@ -14,9 +14,16 @@
 <div class = "page-wrapper">
 	<h1>View All Owners</h1>
 	<div class = "page-divider"></div>
-	<mvc:form modelAttribute = "owner" action = "editOwnerForm.mvc">
-		<c:forEach items = "${allOwners}" var = "owner">
+	<c:choose>
+		<c:when test="${empty requestScope.allOwners}">
 			<div class = "result-style">
+				<h2>No owners entered. Please add owner information.</h2>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<mvc:form modelAttribute = "owner" action = "editOwnerForm.mvc">
+			<c:forEach items = "${allOwners}" var = "owner">
+				<div class = "result-style">
 					<h2>Owner Entry</h2>
 					<div>
 						<ul>
@@ -61,10 +68,18 @@
 			</c:forEach>
 			<div class = "result-style">
 				<input type = "submit" value = "Add Pet" name = "doThis">
-				<input type = "submit" value = "Edit Owner Information" name = "doThis">
+				<input type = "submit" value = "Edit Owner Information" name = "doThis"><br/>
+				<br/>
 				<input type = "submit" value = "Delete Owner" name = "doThis">
 			</div>
 	</mvc:form>
+	</c:otherwise>
+	</c:choose>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="ownerForm.mvc">Add Pet Owner</a>
+	  </span>
+	</div>
 	<div class="wrapper">
 	  <span class="square">
 	    <a class="tenth before after" href="homepage.mvc">Return Home</a>

@@ -68,7 +68,9 @@ public class PetRegistryController {
 		}else if(act.equals("Delete Owner")) {
 			Owner ownerToDelete = ownerDao.getOwner(ownerId);
 			ownerDao.deleteOwner(ownerToDelete);
+			List<Owner> allOwners = ownerDao.getAllOwners();
 			modelAndView.setViewName("viewOwners");
+			modelAndView.addObject("allOwners", allOwners);
 		}
 		return modelAndView;
 	}

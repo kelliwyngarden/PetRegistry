@@ -14,7 +14,14 @@
 <div class = "page-wrapper">
 	<h1>View All Pets</h1>
 	<div class = "page-divider"></div>
-	<mvc:form modelAttribute = "pet" action = "petUpdate.mvc">
+	<c:choose>
+		<c:when test="${empty requestScope.allPets}">
+			<div class = "result-style">
+				<h2>No pets entered. Please select an owner and add pet information.</h2>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<mvc:form modelAttribute = "pet" action = "petUpdate.mvc">
 			<c:forEach items = "${allPets}" var = "pet">
 				<div class = "result-style">
 					<h2>Pet Entry</h2>
@@ -68,6 +75,13 @@
 				<input type = "submit" value = "Remove this Pet" name = "doThis">
 			</div>
 	</mvc:form>
+	</c:otherwise>
+	</c:choose>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="viewOwners.mvc">View All Owners</a>
+	  </span>
+	</div>
 	<div class="wrapper">
 	  <span class="square">
 	    <a class="tenth before after" href="homepage.mvc">Return Home</a>

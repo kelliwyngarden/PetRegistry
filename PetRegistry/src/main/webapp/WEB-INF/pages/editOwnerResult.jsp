@@ -6,33 +6,48 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Updated Owner Information</title>
+<title>Edit Owner Result</title>
+<style><%@include file="/WEB-INF/css/cssFile.css"%></style>
 </head>
 <body>
-<h2>Updated Owner Information</h2>
-	<table>
-		<tr>
-			<td>First Name</td>
-			<td>${o.firstName}</td>
-		</tr>
-		<tr>
-			<td>Last Name</td>
-			<td>${o.lastName}</td>
-		</tr>
-		<tr>
-			<td>Phone Number</td>
-			<td>${o.phone}</td>
-		</tr>
-		<tr>
-			<td>Email</td>
-			<td>${o.email}</td>
-		</tr>
-		<tr>
-			<td>Address</td>
-			<td>${o.address}</td>
-		</tr>
-	</table>
-<a href = "homepage.mvc">Back to Homepage</a>
-<a href = "viewOwners.mvc">View All Owners</a>
+<div class = "page-wrapper">
+	<h1>Owner Edit Confirmation</h1>
+	<div class = "page-divider"></div>
+	<div class = "result-style">
+		<h2>Edit Owner Result</h2>
+		<ul>
+			<li>
+				<label>First Name</label>
+				<p>${o.firstName}</p>
+			</li>
+			<li>
+				<label>Last Name</label>
+				<p>${o.lastName}</p>
+			</li>
+			<li>
+				<label>Phone Number</label>
+				<p>${o.phone}</p>
+			</li>
+			<li>
+				<label>Email</label>
+				<p>${o.email}</p>
+			</li>
+			<li>
+				<label>Address</label>
+				<p>${o.address}</p>
+			</li>
+		</ul>
+	</div>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="viewOwners.mvc">View All Owners</a>
+	  </span>
+	</div>
+	<div class="wrapper">
+	  <span class="square">
+	    <a class="tenth before after" href="homepage.mvc">Return Home</a>
+	  </span>
+	</div>
+</div>
 </body>
 </html>
