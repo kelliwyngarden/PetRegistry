@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://www.springframework.org/tags/form" prefix = "mvc" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored = "false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -26,26 +27,31 @@ function adjust_textarea(h) {
 			<li>
 				<mvc:label path = "firstName">First Name</mvc:label>
 				<mvc:input path = "firstName"/>
+				<mvc:errors path = "firstName" class = "errors"/>
 				<span>Enter First Name</span>
 			</li>
 			<li>
 				<mvc:label path = "lastName">Last Name</mvc:label>
 				<mvc:input path = "lastName"/>
+				<mvc:errors path = "lastName" class = "errors"/>
 				<span>Enter Last Name</span>
 			</li>
 			<li>
 				<mvc:label path = "phone">Phone Number</mvc:label>
 				<mvc:input path = "phone"/>
+				<mvc:errors path = "phone" class = "errors"/>
 				<span>Enter Phone Number</span>
 			</li>
 			<li>
 				<mvc:label path = "email">Email</mvc:label>
 				<mvc:input path = "email"/>
+				<mvc:errors path = "email" class = "errors"/>
 				<span>Enter Email Address</span>
 			</li>
 			<li>
 				<mvc:label path = "address">Address</mvc:label>
 				<mvc:input path = "address"/>
+				<mvc:errors path = "address" class = "errors"/>
 				<span>Enter Address</span>
 			</li>
 			<li>

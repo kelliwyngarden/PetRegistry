@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.eclipse.persistence.annotations.CascadeOnDelete;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "pet")
@@ -15,9 +16,13 @@ public class Pet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int petId;
+	@NotBlank
 	private String name;
+	@NotBlank
 	private String species;
+	@NotBlank
 	private String age;
+	@NotBlank
 	private String coloring;
 	private int ownerId;
 	

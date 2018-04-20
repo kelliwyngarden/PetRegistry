@@ -201,6 +201,11 @@ a.before:hover:before,a.after:hover:after{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
 }
+.form-style .errors{
+	color: #ff0000;
+	padding: 3px;
+	font-style: bold;
+}
 .form-style textarea{
     resize:none;
 }

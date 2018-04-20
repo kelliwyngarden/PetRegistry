@@ -4,6 +4,7 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>edu.dmacc.spring.petRegistry.Pet</class>
 		<class>edu.dmacc.spring.petRegistry.Owner</class>
+		<validation-mode>NONE</validation-mode>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/petRegistry"/>

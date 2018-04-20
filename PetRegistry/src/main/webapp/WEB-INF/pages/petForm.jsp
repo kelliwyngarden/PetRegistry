@@ -26,21 +26,25 @@ function adjust_textarea(h) {
 			<li>
 				<mvc:label path = "name" type = "text">Pet Name</mvc:label>
 				<mvc:input path = "name" />
+				<mvc:errors path = "name" class = "errors"/>
 				<span>Enter Pet Name</span>
 			</li>
 			<li>
 				<mvc:label path = "species">Species</mvc:label>
 				<mvc:input path = "species" />
+				<mvc:errors path = "species" class = "errors"/>
 				<span>Enter Pet Species</span>
 			</li>
 			<li>
 				<mvc:label path = "age">Age</mvc:label>
 				<mvc:input path = "age" />
+				<mvc:errors path = "age" class = "errors"/>
 				<span>Enter Pet Age</span>
 			</li>
 			<li>
 				<mvc:label path = "coloring">Coloring</mvc:label>
 				<mvc:input path = "coloring" />
+				<mvc:errors path = "coloring" class = "errors"/>
 				<span>Enter Pet Color</span>
 			</li>
 			<li>
